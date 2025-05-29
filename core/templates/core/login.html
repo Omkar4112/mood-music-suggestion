@@ -1,0 +1,98 @@
+{% extends 'core/base_minimal.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .login-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-sizing: border-box;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* spacing between fields */
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    overflow: hidden;
+  }
+
+  .input-group-text {
+    background-color: #e9ecef;
+    padding: 0.375rem 0.75rem;
+    border-right: 1px solid #ced4da;
+    color: #495057;
+    font-size: 1rem;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .form-control {
+    border: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    outline: none;
+    flex: 1;
+  }
+
+  .form-control:focus {
+    box-shadow: none;
+  }
+
+  button[type="submit"] {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0b5ed7;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  a {
+    color: #0d6efd;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="input-group">
+          <span class="input-group-text">@</span>
+          <input type="text" name="username" class="form-control" placeholder="Username" aria-label="Username" required>
+        </div>
+        <div class="input-group">
+          <span class="input-group-text">🔒</span>
+          <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+</div>
+{% endblock %}

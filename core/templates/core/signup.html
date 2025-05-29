@@ -1,0 +1,108 @@
+{% extends 'core/base_minimal.html' %}
+
+{% block content %}
+<style>
+  .signup-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-sizing: border-box;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  form p {
+    margin: 0;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+  }
+
+  button[type="submit"] {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0b5ed7;
+  }
+
+  .login-link {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .login-link a {
+    color: #0d6efd;
+    text-decoration: none;
+  }
+
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+
+  .error-list {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    border: 1px solid red;
+    background-color: #ffe5e5;
+    color: red;
+    border-radius: 0.375rem;
+    font-size: 0.95rem;
+  }
+</style>
+
+<div class="signup-container">
+  <h2>Sign Up</h2>
+  <form method="post" action="">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      {% if form.errors %}
+        <div class="error-list">
+          <ul>
+            {% for field in form %}
+              {% for error in field.errors %}
+                <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+              {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      <button type="submit">Sign Up</button>
+  </form>
+
+  <div class="login-link">
+    Already have an account? <a href="{% url 'login' %}">Log In</a>
+  </div>
+</div>
+{% endblock %}

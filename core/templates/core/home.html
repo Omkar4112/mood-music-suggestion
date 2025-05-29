@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h2 style="text-align:center; margin-bottom:20px;">All Songs</h2>
+
+<div style="
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+">
+  {% for song in songs %}
+  <div style="
+    flex: 1 1 calc(48% - 10px); /* Two per row on medium+ screens */
+    min-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  ">
+    {% if song.image %}
+      <img src="{{ song.image }}" alt="{{ song.title }}" style="width:80px; height:80px; border-radius:6px; object-fit: cover;">
+    {% else %}
+      <div style="width:80px; height:80px; background:#ccc; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#666;">
+        No Image
+      </div>
+    {% endif %}
+    <div style="flex: 1;">
+      <strong style="font-size:1.1em; color:#007bff;">{{ song.title }}</strong> by {{ song.artist }}<br>
+      <small style="color:#555;">Genre: {{ song.genre }}</small><br>
+      {% if song.url %}
+        <audio controls style="margin-top: 5px; width: 100%;">
+          <source src="{{ song.url }}" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      {% else %}
+        <p style="color: red;">No audio available.</p>
+      {% endif %}
+    </div>
+  </div>
+  {% empty %}
+    <p>No songs available.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

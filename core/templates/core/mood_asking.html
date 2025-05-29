@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+  .mood-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  select {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+  }
+
+  select:focus {
+    outline: none;
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.2rem rgba(13,110,253,.25);
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0b5ed7;
+  }
+</style>
+
+<div class="mood-container">
+  <h2>Select Your Mood</h2>
+  <form method="post" action="{% url 'suggest' %}">
+      {% csrf_token %}
+      <select name="mood_id" required>
+          <option value="" disabled selected>Select mood</option>
+          {% for mood in moods %}
+              <option value="{{ mood.id }}">{{ mood.name }}</option>
+          {% endfor %}
+      </select>
+      <button type="submit">Get Suggestions</button>
+  </form>
+</div>
+{% endblock %}

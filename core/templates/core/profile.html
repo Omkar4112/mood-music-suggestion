@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<style>
+  .profile-container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 25px 30px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+    box-sizing: border-box;
+  }
+
+  .profile-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+  }
+
+  .profile-info {
+    font-size: 1.05rem;
+    color: #343a40;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 12px;
+  }
+
+  .profile-info:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+</style>
+
+<div class="profile-container">
+  <h2>Your Profile</h2>
+  <p class="profile-info"><strong>Username:</strong> {{ user.username }}</p>
+  <p class="profile-info"><strong>Email:</strong> {{ user.email }}</p>
+</div>
+{% endblock %}
