@@ -1,50 +1,60 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: #f9fafb; /* Lighter, cleaner background */
+    color: #333;
+    line-height: 1.6;
 }
 
 header {
-    background: #222;            /* Darker than before for better contrast */
+    background: #181818; /* Even darker for crisp contrast */
     color: #fff;
-    padding: 10px 0;
+    padding: 12px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header h1 {
     margin: 0;
-    font-weight: normal;
-    color: #00aaff;              /* Bright accent color for the title */
-    font-size: 1.6rem;
+    font-weight: 600;
+    color: #00aaff; /* Bright accent */
+    font-size: 1.75rem;
+    letter-spacing: 1px;
 }
 
 nav a {
     display: inline-block;
-    margin: 0 8px;
-    padding: 8px 16px;
-    background-color: #00aaff;  /* Accent blue matching header title */
-    color: white;
+    margin: 0 10px;
+    padding: 10px 18px;
+    background-color: #00aaff;
+    color: #fff;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    font-weight: 600;
-    font-size: 0.9rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 170, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-nav a:hover {
-    background-color: #0077cc;  /* Slightly darker blue on hover */
-    color: white;
-}
-
+nav a:hover,
 nav a:focus {
+    background-color: #0077cc;
+    color: #fff;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0,170,255,0.5); /* Light blue shadow */
+    box-shadow: 0 0 8px 3px rgba(0, 119, 204, 0.7);
 }
 
 main {
-    padding: 20px;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px 40px 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
